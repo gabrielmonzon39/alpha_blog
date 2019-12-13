@@ -1,1 +1,11 @@
 @import 'bootstrap/dist/css/bootstrap';
+
+.center{
+    text-align: center;
+}
+
+.jumbotron{
+    background-image: asset-url("pacman.jpg");
+    background-size: cover;
+    height: 575px;
+}
