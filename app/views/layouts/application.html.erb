@@ -15,4 +15,5 @@
     
     <%= yield %>
 
+    <%= debug(params) if Rails.env.delevopment? %>
 </html>
