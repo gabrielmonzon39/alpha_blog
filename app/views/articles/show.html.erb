@@ -1,10 +1,23 @@
 <h2 align="center">Title: <%= @article.title %></h2>
 
-<div class="card card-body bg-light col-xs-8 col-xs-offset-2">
-    <h4 class="center description"><strong>Description:</strong></h4>
-    <hr>
-    <div class="container">
-        <%= simple_format(@article.description) %>
+<div class = "container">
+    
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col center">
+        <div class = "card bg-light">
+            <div class="card-title article-title">
+                Description:
+            </div>
+
+            <div class="card-body">
+                <%= simple_format(@article.description) %>
+            </div>
+
         <div class="article-actions">
             <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
             <%= link_to "Delete this article", article_path(@article), method: :delete,
@@ -12,5 +25,45 @@
                         class: "btn btn-xs btn-danger" %>
             <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
         </div>
+        </div>
     </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
+</div>
+
+<br>
+
+<div class = "container">
+    
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col center">
+            <div class="card card-body bg-light">
+                <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+                <div class="article-title">
+                <%= link_to @article.user.user , user_path(@article.user) %>
+                </div>
+            <div class="article-body">
+            <small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
 </div>

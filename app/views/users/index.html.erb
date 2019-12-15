@@ -1,5 +1,10 @@
 <h1 class="center">Listing all users</h1>
 
+
+<div class = "digg_pagination ">
+    <%= will_paginate @users %>
+</div>
+
 <% @users.each do |user| %>
 
 <div class = "container">
@@ -33,3 +38,8 @@
 
 <br>
 <% end %>
+
+
+<div class = "digg_pagination ">
+    <%= will_paginate @users %>
+</div>

@@ -6,4 +6,12 @@
 
 <br>
 
-<%= render 'articles/article', obj: @user.articles %>
+<div class = "digg_pagination ">
+    <%= will_paginate @articles %>
+</div>
+
+<%= render 'articles/article', obj: @articles %>
+
+<div class = "digg_pagination ">
+    <%= will_paginate @articles %>
+</div>
