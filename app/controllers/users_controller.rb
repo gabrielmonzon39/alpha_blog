@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     before_action :find_user, only:[:edit, :update, :show]
+    before_action :require_admin, only:[:destroy]
 
     def new
         @user = User.new
@@ -37,6 +38,13 @@ class UsersController < ApplicationController
         @users = User.paginate(page: params[:page], per_page:5)
     end
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        flash[:succes] = "User and user's articles deleted."
+        redirect_to users_path
+    end
+
     private
     def user_params
         params.require(:user).permit(:user,:email,:password)
@@ -44,5 +52,12 @@ class UsersController < ApplicationController
 
     def find_user
         @user = User.find(params[:id])
+    end
+
+    def require_admin
+        if logged_in? && !current_user.admin?
+            flash[:danger] = "You must be an admin for this"
+            redirect_to root_path
+        end
     end
 end
