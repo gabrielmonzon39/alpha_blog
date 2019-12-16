@@ -1,0 +1,41 @@
+<h1 align="center">Listing Categories</h1>
+
+<% @categories.each do |category| %>
+
+<div class = "container">
+    
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col center">
+            <div class="card card-body bg-light">
+                <div class="article-title">
+                    <%= link_to category.name, category_path(category) %>
+                </div>
+            <div class="article-body">
+            </div>
+
+            <% if logged_in? && current_user.admin? %>
+                <div class="article-actions">
+                    <%= link_to "Delete", category_path(category), method: :delete,
+                                        data: { confirm: "Are you sure you want to delete the category?"},
+                                        class: "btn btn-xs btn-danger" %>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
+</div>
+<br>
+<% end %>

@@ -1,2 +1,9 @@
 <h1>Update your article</h1>
-<%= render 'form'%>
+
+<% if logged_in? && (@article.user == current_user || current_user.admin)%>
+    <%= render 'form'%>
+<% else %>
+
+<% flash.now[:danger] = "You are not the owner of the article" %>
+     
+<% end %>
