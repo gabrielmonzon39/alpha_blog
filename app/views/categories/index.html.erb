@@ -1,5 +1,9 @@
 <h1 align="center">Listing Categories</h1>
 
+<div class = "digg_pagination ">
+    <%= will_paginate @categories %>
+</div>
+
 <% @categories.each do |category| %>
 
 <div class = "container">
@@ -15,8 +19,6 @@
                 <div class="article-title">
                     <%= link_to category.name, category_path(category) %>
                 </div>
-            <div class="article-body">
-            </div>
 
             <% if logged_in? && current_user.admin? %>
                 <div class="article-actions">
@@ -39,3 +41,7 @@
 </div>
 <br>
 <% end %>
+
+<div class = "digg_pagination ">
+    <%= will_paginate @categories %>
+</div>
