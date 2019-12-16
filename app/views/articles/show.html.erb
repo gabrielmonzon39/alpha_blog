@@ -18,6 +18,14 @@
                 <%= simple_format(@article.description) %>
             </div>
 
+        <% if @article.categories.any? %>
+            <p>Categories: 
+            <% @article.categories.each do |category| %>
+                <span class="badge"> <%= link_to category.name, category_path(category) %>  </span>
+            <% end %>
+            </p>          
+        <% end %>
+        
         <div class="article-actions">
             <% if logged_in? && (@article.user == current_user || current_user.admin?)%>
                 <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
